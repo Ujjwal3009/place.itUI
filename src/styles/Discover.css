@@ -227,17 +227,65 @@
   transition: all 0.3s ease;
 }
 
+.categories {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.category-chip {
+  background: rgba(255, 255, 255, 0.95);
+  color: #000;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  animation: chipFloat 0.3s ease-out;
+}
+
+.category-chip:hover {
+  transform: translateY(-2px) scale(1.05);
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Add animation for chips appearing */
+@keyframes chipFloat {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Update hover card styles */
 .hover-card {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(2px);
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.7) 50%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  backdrop-filter: blur(4px);
   opacity: 0;
-  transition: opacity 0.3s ease;
-  padding: 16px;
+  transition: all 0.3s ease;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
+  gap: 12px;
 }
 
 .place-card:hover .hover-card {
@@ -260,35 +308,30 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
-.categories {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.category-chip {
-  background: rgba(255, 255, 255, 0.9);
-  color: #000;
-  padding: 6px 12px;
-  border-radius: 16px;
-  font-size: 12px;
-  font-weight: 500;
-}
-
 .place-info {
   color: white;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.3s ease 0.1s;
+}
+
+.place-card:hover .place-info {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .place-info h3 {
-  margin: 0 0 8px 0;
+  margin: 0 0 4px 0;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 .place-info p {
   margin: 0;
   font-size: 14px;
   opacity: 0.9;
+  font-weight: 500;
 }
 
 .card-link {

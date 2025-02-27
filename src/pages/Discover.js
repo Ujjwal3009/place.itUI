@@ -77,6 +77,33 @@ const Discover = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const getCategoryEmoji = (category) => {
+    const categoryEmojis = {
+      'Historical': '🏛️',
+      'Nature': '🌲',
+      'Beach': '🏖️',
+      'Mountain': '⛰️',
+      'City': '🌆',
+      'Food': '🍜',
+      'Adventure': '🏃‍♂️',
+      'Cultural': '🎭',
+      'Religious': '🕌',
+      'Architecture': '🏰',
+      'Photography': '📸',
+      'Hiking': '🥾',
+      'Shopping': '🛍️',
+      'Nightlife': '🌙',
+      'Art': '🎨',
+      'Music': '🎵',
+      'Sports': '⚽',
+      'Wildlife': '🦁',
+      'Romantic': '💑',
+      'Family': '👨‍👩‍👧‍👦'
+    };
+    
+    return categoryEmojis[category] || '✨';
+  };
+
   if (loading) return <div>Loading...</div>;
 
   return (
@@ -127,7 +154,9 @@ const Discover = () => {
               <div className="hover-card">
                 <div className="categories">
                   {place.categories?.map((category, idx) => (
-                    <span key={idx} className="category-chip">{category}</span>
+                    <span key={idx} className="category-chip">
+                      {getCategoryEmoji(category)} {category}
+                    </span>
                   ))}
                 </div>
                 <div className="place-info">
