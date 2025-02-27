@@ -9,6 +9,7 @@ import Auth from './pages/Auth';
 import RegistrationSuccess from './pages/RegistrationSuccess';
 import Onboarding from './pages/Onboarding';
 import ProtectedRoute from './components/ProtectedRoute';
+import MyPlaces from './pages/MyPlaces';
 import './styles/App.css';
 
 function App() {
@@ -65,6 +66,7 @@ function App() {
               </ProtectedRoute>
             } 
           />
+          <Route path="/my-places" element={<MyPlaces />} />
           
           {/* Default redirect */}
           <Route path="/" element={<Navigate to="/discover" replace />} />

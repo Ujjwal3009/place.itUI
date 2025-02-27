@@ -58,65 +58,19 @@ export const getCurrentUser = async () => {
 };
 
 // Check if user is authenticated
-export const isAuthenticated = async () => {
+export const isAuthenticated = () => {
+  const token = localStorage.getItem('token');
+  if (!token) return false;
+  
   try {
-    const token = localStorage.getItem('token');
-    console.log('Checking token:', token ? 'exists' : 'not found');
+    // Check if token is expired
+    const tokenData = JSON.parse(atob(token.split('.')[1]));
+    const expirationTime = tokenData.exp * 1000; // Convert to milliseconds
+    const currentTime = Date.now();
     
-    if (!token) {
-      return false;
-    }
-
-    // Check token structure and expiration
-    try {
-      const [, payload] = token.split('.');
-      const decoded = JSON.parse(atob(payload));
-      
-      const currentTime = Date.now() / 1000;
-      console.log('Token expiration:', {
-        exp: decoded.exp,
-        current: currentTime,
-        isExpired: decoded.exp < currentTime
-      });
-      
-      if (decoded.exp < currentTime) {
-        console.log('Token expired');
-        localStorage.removeItem('token');
-        return false;
-      }
-    } catch (err) {
-      console.error('Token parse error:', err);
-      localStorage.removeItem('token');
-      return false;
-    }
-
-    // Verify with backend
-    try {
-      const response = await fetch(`${API_CONFIG.BASE_URL}/auth/verify`, {
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
-
-      console.log('Backend verification:', {
-        status: response.status,
-        ok: response.ok
-      });
-
-      if (!response.ok) {
-        localStorage.removeItem('token');
-        return false;
-      }
-
-      return true;
-    } catch (err) {
-      console.error('Backend verification error:', err);
-      return false;
-    }
-
-  } catch (err) {
-    console.error('isAuthenticated error:', err);
+    return currentTime < expirationTime;
+  } catch (error) {
+    console.error('Error checking token validity:', error);
     return false;
   }
 };

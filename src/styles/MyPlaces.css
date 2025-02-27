@@ -1,0 +1,356 @@
+.my-places-page {
+  padding: 80px 24px 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  background: #0A0A0A;
+  min-height: 100vh;
+}
+
+.places-header {
+  margin-bottom: 40px;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.header-content h1 {
+  font-size: 42px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #FF385C, #FF6B81);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -1px;
+}
+
+.header-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.add-place-btn {
+  background: linear-gradient(135deg, #FF385C, #FF6B81);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(255, 56, 92, 0.3);
+}
+
+.add-place-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 56, 92, 0.4);
+}
+
+.share-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.view-toggle {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px;
+  border-radius: 12px;
+  display: inline-flex;
+  margin-bottom: 24px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.view-toggle button {
+  padding: 8px 24px;
+  border: none;
+  background: none;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.view-toggle button.active {
+  background: #FF385C;
+  color: white;
+}
+
+.search-container {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.search-bar {
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.search-results-count {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  animation: fadeIn 0.3s ease;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 16px 24px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  color: white;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: #FF385C;
+  box-shadow: 0 0 0 4px rgba(255, 56, 92, 0.1);
+  transform: scale(1.01);
+}
+
+.search-bar input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.places-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.place-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  animation: cardAppear 0.5s ease backwards;
+}
+
+.place-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 56, 92, 0.3);
+}
+
+.place-link {
+  text-decoration: none;
+  color: white;
+}
+
+.place-image-wrapper {
+  position: relative;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+}
+
+.place-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.place-card:hover .place-image {
+  transform: scale(1.1);
+}
+
+.place-badges {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  display: flex;
+  gap: 8px;
+  z-index: 1;
+}
+
+.badge {
+  padding: 6px 12px;
+  background: rgba(255, 56, 92, 0.9);
+  color: white;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(4px);
+  text-transform: uppercase;
+}
+
+.place-info {
+  padding: 20px;
+}
+
+.place-info h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: white;
+}
+
+.place-info p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.place-info p::before {
+  content: '📍';
+  font-size: 16px;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.error {
+  text-align: center;
+  color: #FF385C;
+  padding: 20px;
+  background: rgba(255, 56, 92, 0.1);
+  border-radius: 12px;
+  margin: 40px auto;
+  max-width: 400px;
+}
+
+.add-place-card {
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  aspect-ratio: 3/2;
+  transition: all 0.2s ease;
+}
+
+.add-place-card:hover {
+  border-color: #FF385C;
+  background: rgba(255, 56, 92, 0.1);
+}
+
+.add-place-content {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.plus-icon {
+  font-size: 32px;
+  display: block;
+  margin-bottom: 8px;
+  color: #FF385C;
+}
+
+@media (max-width: 768px) {
+  .my-places-page {
+    padding: 60px 16px 24px;
+  }
+
+  .header-content h1 {
+    font-size: 32px;
+  }
+
+  .places-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 16px;
+  }
+}
+
+/* Netflix-like search animations */
+.search-animation {
+  animation: searchScale 0.3s ease forwards;
+}
+
+@keyframes searchScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stagger animation for search results */
+.place-card:nth-child(1) { animation-delay: 0.1s; }
+.place-card:nth-child(2) { animation-delay: 0.2s; }
+.place-card:nth-child(3) { animation-delay: 0.3s; }
+.place-card:nth-child(4) { animation-delay: 0.4s; }
+.place-card:nth-child(5) { animation-delay: 0.5s; }
+/* Add more if needed */
+
+/* Add a subtle gradient overlay on cards during search */
+.place-card.search-animation::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 56, 92, 0.1),
+    transparent
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.place-card.search-animation:hover::after {
+  opacity: 1;
+} 

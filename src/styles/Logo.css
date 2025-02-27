@@ -1,0 +1,138 @@
+.logo-link {
+  text-decoration: none;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo svg {
+  filter: drop-shadow(0 0 8px rgba(255, 56, 92, 0.3));
+  transition: transform 0.3s ease;
+}
+
+.logo:hover svg {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.logo-text {
+  font-size: 24px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #FFF, #FF385C);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+}
+
+.logo-dot {
+  color: #FF385C;
+  -webkit-text-fill-color: #FF385C;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Random animation for the dot */
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+.logo-character {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  animation: float 3s ease-in-out infinite;
+}
+
+.character-body {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #FF385C, #FF6B81);
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(255, 56, 92, 0.3);
+}
+
+.character-face {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 30%;
+}
+
+.eyes {
+  position: relative;
+  width: 100%;
+  height: 8px;
+}
+
+.eyes::before,
+.eyes::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  animation: blink 3s ease-in-out infinite;
+}
+
+.eyes::before {
+  left: 25%;
+}
+
+.eyes::after {
+  right: 25%;
+}
+
+.blush {
+  position: absolute;
+  width: 100%;
+  top: 120%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.blush::before,
+.blush::after {
+  content: '';
+  width: 8px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+}
+
+.map-pin {
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-5px) rotate(5deg);
+  }
+}
+
+@keyframes blink {
+  0%, 90%, 100% {
+    transform: scaleY(1);
+  }
+  95% {
+    transform: scaleY(0.1);
+  }
+} 
