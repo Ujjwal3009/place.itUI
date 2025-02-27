@@ -1,0 +1,187 @@
+.placelist {
+  background: rgba(32, 32, 32, 0.6);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 32px;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.placelist-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.placelist-header h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+}
+
+.save-button {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.save-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.save-button.saved {
+  background: #FF385C;
+  border-color: #FF385C;
+  color: white;
+}
+
+.placelist-description {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 15px;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.placelist-author {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Pinterest-like Masonry Grid */
+.masonry-grid {
+  columns: 5 220px;
+  column-gap: 16px;
+  width: 100%;
+}
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 16px;
+}
+
+.place-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #2A2A2A;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+}
+
+.image-container img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* Hover effects */
+.place-card:hover {
+  transform: scale(1.02);
+}
+
+.place-card:hover .image-container img {
+  transform: scale(1.05);
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.place-card:hover .overlay {
+  opacity: 1;
+}
+
+.overlay h3 {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 4px;
+  color: #ffffff;
+}
+
+.overlay p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Tags/Badges */
+.tags {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.tag {
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.tag.touristry {
+  background: rgba(255, 56, 92, 0.15);
+  color: #FF385C;
+}
+
+.tag.food {
+  background: rgba(255, 177, 27, 0.15);
+  color: #FFB11B;
+}
+
+.tag.local {
+  background: rgba(46, 204, 113, 0.15);
+  color: #2ECC71;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1400px) {
+  .masonry-grid {
+    columns: 4 220px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .masonry-grid {
+    columns: 3 220px;
+  }
+}
+
+@media (max-width: 800px) {
+  .masonry-grid {
+    columns: 2 220px;
+  }
+}
+
+@media (max-width: 500px) {
+  .masonry-grid {
+    columns: 1 auto;
+  }
+} 

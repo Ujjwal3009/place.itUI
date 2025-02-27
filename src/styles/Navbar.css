@@ -1,0 +1,676 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 72px;
+  background: rgba(18, 18, 18, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 1000;
+}
+
+.navbar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  text-decoration: none;
+  color: #FF385C;
+  letter-spacing: -0.5px;
+  transition: transform 0.3s ease;
+  white-space: nowrap;
+  padding: 8px 0;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.search-bar {
+  flex: 1;
+  max-width: 800px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 48px;
+  padding-top: 30px;
+}
+
+.search-bar input {
+  width: 100%;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 0 24px 0 52px;
+  color: #ffffff;
+  font-size: 15px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.search-bar input:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.search-bar input:focus {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: #FF385C;
+  outline: none;
+  box-shadow: 
+    0 0 0 4px rgba(255, 56, 92, 0.1),
+    0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.5);
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-bar input:focus + .search-icon {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.nav-items {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0 20px;
+  border-radius: 24px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+.theme-toggle {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 20px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-toggle:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px) rotate(15deg);
+}
+
+.create-button {
+  height: 48px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  border-radius: 24px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+}
+
+.create-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.login-button {
+  padding: 8px 20px;
+  background: #FF385C;
+  color: white;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.login-button:hover {
+  background: #ff4d6d;
+  transform: translateY(-1px);
+}
+
+/* Mobile menu button */
+.mobile-menu-button {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  padding: 8px;
+  cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .navbar-container {
+    padding: 0 16px;
+  }
+
+  .search-bar {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    height: 64px;
+  }
+
+  .nav-link {
+    display: none;
+  }
+
+  .search-bar {
+    max-width: none;
+  }
+
+  .create-button {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .navbar-container {
+    padding: 0 12px;
+    gap: 12px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .theme-toggle {
+    display: none;
+  }
+}
+
+/* Animation Keyframes */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Apply animation to navbar */
+.navbar {
+  animation: slideDown 0.5s ease-out;
+}
+
+/* Hover animations */
+.nav-items > * {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-items > *::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #FF385C;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-items > *:hover::after {
+  width: 100%;
+}
+
+/* Focus styles for accessibility */
+.nav-items > *:focus-visible {
+  outline: 2px solid #FF385C;
+  outline-offset: 2px;
+}
+
+/* Add these new styles */
+.profile-dropdown {
+  position: relative;
+  margin-left: 12px;
+}
+
+.profile-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.profile-photo {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  transition: border-color 0.3s ease;
+}
+
+.profile-button:hover .profile-photo {
+  border-color: #FF385C;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background: rgba(18, 18, 18, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  min-width: 200px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+.profile-dropdown:hover .dropdown-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-item {
+  display: block;
+  padding: 12px 16px;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.logout-button {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  color: #FF385C;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 12px 16px;
+}
+
+.logout-button:hover {
+  background: rgba(255, 56, 92, 0.1);
+}
+
+/* Add these new styles for the user menu */
+.user-menu {
+  position: relative;
+  margin-left: 16px;
+}
+
+.profile-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.profile-photo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  transition: border-color 0.3s ease;
+}
+
+.profile-button:hover .profile-photo {
+  border-color: #FF385C;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: rgba(18, 18, 18, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  min-width: 240px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  animation: slideIn 0.2s ease;
+}
+
+.dropdown-header {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dropdown-profile-photo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.user-email {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 8px 0;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  color: white;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+
+.dropdown-item i {
+  font-size: 16px;
+  opacity: 0.7;
+}
+
+.dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.logout-button {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  color: #FF385C;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logout-button:hover {
+  background: rgba(255, 56, 92, 0.1);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Add responsive styles */
+@media (max-width: 768px) {
+  .user-menu {
+    margin-left: 8px;
+  }
+
+  .profile-photo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .dropdown-menu {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 12px 12px 0 0;
+    animation: slideUp 0.3s ease;
+  }
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Keep existing navbar styles and update/add these specific styles */
+
+.profile-section {
+  position: relative;
+  margin-left: 16px;
+}
+
+.profile-button {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.profile-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.profile-photo {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 240px;
+  background: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.dropdown-header {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-profile-photo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-info {
+  flex: 1;
+}
+
+.user-name {
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.2s;
+  font-size: 14px;
+}
+
+.dropdown-item i {
+  width: 16px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.logout-button {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  color: #FF385C;
+  cursor: pointer;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 4px 0;
+}
+
+/* Keep your existing navbar styles and add/update these */
+
+.auth-buttons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: 16px;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  transition: border-color 0.3s ease;
+}
+
+.avatar:hover {
+  border-color: #FF385C;
+}
+
+.logout-btn {
+  padding: 8px 16px;
+  background: rgba(255, 56, 92, 0.1);
+  border: none;
+  border-radius: 20px;
+  color: #FF385C;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: rgba(255, 56, 92, 0.2);
+}
+
+.loading-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #FF385C;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Remove underline from all links in the navbar */
+.navbar a {
+  text-decoration: none;
+} 

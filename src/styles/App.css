@@ -1,0 +1,38 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+.app {
+  min-height: 100vh;
+  background: #0A0A0A;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+}
+
+.app::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.01) 0%, transparent 25%),
+    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.01) 0%, transparent 25%);
+  pointer-events: none;
+}
+
+.dark-mode {
+  background: #000000;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Ensure content appears above background */
+.navbar, .home, .search {
+  position: relative;
+  z-index: 1;
+} 
